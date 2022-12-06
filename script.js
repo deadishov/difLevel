@@ -23,3 +23,9 @@ let mass = {
     'eng': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 };
 console.log(mass[lang]);
+
+
+
+let namePerson = prompt('Введите имя');
+
+console.log((namePerson == 'Артем') ? 'Директор' : (namePerson == 'Александр') ? 'Преподаватель' : ('Студент'));
