@@ -13,7 +13,6 @@ let h;
 let m;
 let s;
 
-let justTime = new Date()
 
 function getThisTime(t) {
     Y = t.getFullYear() + ' года';
@@ -67,13 +66,14 @@ function getSecondTime(t) {
 }
 
 
+setInterval(() => {
+    let justTime = new Date()
+    myTime = getThisTime(justTime);
+    document.querySelector('.first-time').innerHTML = myTime;
 
-
-myTime = getThisTime(justTime);
-document.querySelector('.first-time').innerHTML = myTime;
-
-mySecondTime = getSecondTime(justTime);
-document.querySelector('.second-time').innerHTML = mySecondTime;
+    mySecondTime = getSecondTime(justTime);
+    document.querySelector('.second-time').innerHTML = mySecondTime;
+}, 1000);
 
 
 
