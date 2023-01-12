@@ -76,7 +76,7 @@ body {
 .other__info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .movies-list {
