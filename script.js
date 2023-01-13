@@ -1,7 +1,23 @@
 const filter = document.querySelector('#movie')
 const options = filter.querySelectorAll('option')
 const list = document.querySelector('.cards__list')
+const set = new Set()
 
+
+const getMovies = (data) => {
+    const moviesArr = data.filter(data => data.movies);
+    moviesArr?.forEach((card) => {
+        card.movies.forEach((movie) => {
+            set.add(movie)
+        })
+    })
+
+    set.forEach((movie) => {
+        const option = document.createElement('option')
+        option.textContent = movie
+        filter.append(option)
+    })
+}
 
 const createCards = (item) => {
     const bDay = item.birthDay ? item.birthDay : 'N/A'
@@ -60,24 +76,11 @@ const getData = () => {
         });
 }
 
+
+
 getData()
     .then(data => {
-        const moviesArr = data.filter(data => data.movies);
-        const set = new Set()
-
-        moviesArr?.forEach((card) => {
-            set.add(...card.movies)
-            console.log(set.add(...card.movies));
-        })
-
-
-
-        set.forEach((movie) => {
-            const option = document.createElement('option')
-            option.textContent = movie
-            filter.append(option)
-        })
-
+        getMovies(data)
         data?.forEach((item) => {
             createCards(item)
         })
@@ -102,7 +105,5 @@ filter.addEventListener('input', () => {
             moviesFilter.forEach((hero) => {
                 createCards(hero)
             })
-
-
         })
 })
