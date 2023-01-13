@@ -62,6 +62,22 @@ const getData = () => {
 
 getData()
     .then(data => {
+        const moviesArr = data.filter(data => data.movies);
+        const set = new Set()
+
+        moviesArr?.forEach((card) => {
+            set.add(...card.movies)
+            console.log(set.add(...card.movies));
+        })
+
+
+
+        set.forEach((movie) => {
+            const option = document.createElement('option')
+            option.textContent = movie
+            filter.append(option)
+        })
+
         data?.forEach((item) => {
             createCards(item)
         })
